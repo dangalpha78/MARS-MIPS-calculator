@@ -25,17 +25,21 @@ II.Idea and Algorithm
 III.Calculator Implementation
 1.Program Preview
 Initially, the user inputs an infix expression, which the program then evaluates.
+
 ![image](https://github.com/user-attachments/assets/aa148b15-178c-4b52-8f75-dea1e7e5672c)
+
 ![image](https://github.com/user-attachments/assets/848ce67b-4b78-4d5b-8eab-55a26836c005)
 
 
 Subsequently, the program furnishes the result and prompts the user to input another expression. 
 
 After obtaining the expected calculation result, the user can input another operation to continue or stop the program by entering "quit".
+
 ![image](https://github.com/user-attachments/assets/d11bae70-5f5d-4b1a-855a-61e1380e3d47)
 
 
 The program records both the user input and the outcomes of all expressions within a single session into a file named "calc_log.txt".
+
 ![image](https://github.com/user-attachments/assets/f0f1eb9f-f61e-4a32-9561-c035f5ddb10c)
 
 2.Set Up Data Decleration
@@ -69,12 +73,14 @@ fout: File path for logging or output.
 a)Convert into postfix
 Handle the input string
 Initially, we read and loop through the input string (infix expression). Here's the algorithm:
+
 ![image](https://github.com/user-attachments/assets/f11d62fd-7cfa-46c6-95d0-45613b00d7e5)
 
 
 Explain in simple terms, I'm reading an input string and checking if it's valid or not. Then, I perform different processing data for each character in the string. After receiving the last character, I complete the input processing step.
 Handle digits
 When handling a numerical character, I convert it from a char to an int and then from an int to a double. After that, I add the converted value to a variable. If there are still digits after the decimal point, I multiply the variable by 10. If the number has decimal places after the ".", after converting the digit to a double, I divide it by 10 and add it to the storage variable. This process stops only when receiving a character that is not a digit.
+
 ![image](https://github.com/user-attachments/assets/8b5c8d07-d9ee-4002-b83e-2e29b5c0b615)
 
 Handle operators
@@ -90,16 +96,19 @@ If the operator stack is empty, we simply push the operator onto the stack. Othe
 Additionally, since a number or an opening parenthesis may appear before an operator, we also add them to the postfix expression.
 When we encounter a closing bracket ), we take all the operators from the operator stack and add them to the postfix expression until we find the matching opening bracket (. We don't include the opening bracket in the postfix expression. This ensures that all operations within the parentheses are evaluated first.
 We repeat this process for all operators, based on the priority table of each operator.
+
 ![image](https://github.com/user-attachments/assets/4913cf42-a136-4a40-b66a-6e6ec345918e)
 
 Handle M
 If "M" appears in the first operation, its value will be 0. From the second operation onwards, "M" will store the result of the previous operation (provided the operation is valid).
 b)Print postfix
 With the given postfix array, we sequentially read each element in the array and print them one by one.
+
 ![image](https://github.com/user-attachments/assets/f15f81d8-7edb-4d58-8e15-3b00044ec7fb)
 
 c)Calculation
 With the given postfix array, we can read each element in the array. If the element is positive, we store it in a stack array. If the element is negative, we identify it as the corresponding operator and perform the corresponding calculation.
+
 ![image](https://github.com/user-attachments/assets/4e545e0c-6ccf-4cd6-8bc7-763d1b75956e)
 
 If we finish processing the entire postfix array, we proceed to the step of printing the result.
@@ -111,10 +120,13 @@ In the terminal print section, besides printing the first number in the stack ar
 To convert from double to string, we need two steps:
 The first step is to convert the integer part. For example, if we have the number 123.456, we need to store the digits 1, 2, 3 in an array of characters. The process is to convert 123.456 into the integer 123, then repeatedly divide by 10 to get the units and the remainder until the quotient is less than 1.
 The second step is to convert the decimal part. We subtract the integer part from the original number, so for the example above, we subtract 123 from 123.456 to get 0.456. Then we multiply by 10 to get the next digit after the decimal point, and repeat this process 16 times to get the 16 digits after the decimal point.
+
 ![image](https://github.com/user-attachments/assets/eb2e971f-a20d-463b-9eb0-6e9d32b4572b)
 
 IV.Preview of test cases
+
 ![image](https://github.com/user-attachments/assets/602bc3ca-0484-47f9-a336-85f7fee98454)
+
 ![image](https://github.com/user-attachments/assets/7a1a4ee0-c8fb-4069-95f4-a2ccee8dc2b3)
 
 
