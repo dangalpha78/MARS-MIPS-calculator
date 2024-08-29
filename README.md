@@ -86,12 +86,8 @@ When handling a numerical character, I convert it from a char to an int and then
 Handle operators
 When processing operators, I handle them based on their precedence according to the following operator table:
 
-Operators	Precedence
-( )	        4
-!	          3
-^	          2
-* /	        1
-+ -	        0
+![image](https://github.com/user-attachments/assets/ea48177d-cf5e-48df-8c4b-54d7cebf0bf0)
+
 If the operator stack is empty, we simply push the operator onto the stack. Otherwise, we compare the precedence of the operator with the operator at the top of the stack. If the operator on the stack has lower precedence, we push the new operator onto the stack. If the operator on the stack has higher or equal precedence, we pop operators from the stack and add them to the postfix expression until the stack is empty or the top operator has lower precedence. After that, we push the new operator onto the stack.
 Additionally, since a number or an opening parenthesis may appear before an operator, we also add them to the postfix expression.
 When we encounter a closing bracket ), we take all the operators from the operator stack and add them to the postfix expression until we find the matching opening bracket (. We don't include the opening bracket in the postfix expression. This ensures that all operations within the parentheses are evaluated first.
